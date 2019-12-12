@@ -16,7 +16,7 @@ class App extends Component{
 
     super();
     this.state = {
-      apiURL : "https://api.themoviedb.org/3/movie/top_rated?api_key={api_key}&language=pt-BR&page=",
+      apiURL : "https://api.themoviedb.org/3/movie/top_rated?api_key={f2285e99f3f95c5aa26de6a5cbbd72f2}&language=pt-BR&page=",
       page : 1,
       items: [],
       total_pages : ""
