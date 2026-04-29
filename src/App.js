@@ -5,26 +5,28 @@ const style = {
   height: 50,
   border: "1px solid green",
   margin: 6,
-  padding: 8
+  padding: 8,
+  backgroundColor: "green",
+  color: "white"
 };
 
 
 
-class App extends Component{
+class App extends Component {
 
-  constructor(){
+  constructor() {
 
     super();
     this.state = {
-      apiURL : "https://api.themoviedb.org/3/movie/top_rated?api_key=f2285e99f3f95c5aa26de6a5cbbd72f2&language=pt-BR&page=",
-      page : 1,
+      apiURL: "https://api.themoviedb.org/3/movie/top_rated?api_key=f2285e99f3f95c5aa26de6a5cbbd72f2&language=pt-BR&page=",
+      page: 1,
       items: [],
-      total_pages : ""
+      total_pages: ""
     };
 
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getMovies();
   }
 
@@ -32,17 +34,17 @@ class App extends Component{
   getMovies = () => {
 
     fetch(this.state.apiURL + this.state.page)
-    .then(response => response.json())
-    .then(data => {
+      .then(response => response.json())
+      .then(data => {
         this.setState({
-          items : this.state.items.concat(data.results),
-          total_pages : data.total_pages
+          items: this.state.items.concat(data.results),
+          total_pages: data.total_pages
         })
         console.log(data)
-    })
-    .catch(error => {
+      })
+      .catch(error => {
         console.log(error);
-    })
+      })
 
   }
 
@@ -50,9 +52,9 @@ class App extends Component{
     // 20 more records in 1.5 secs
     setTimeout(() => {
 
-      if(this.state.page < this.state.total_pages){
+      if (this.state.page < this.state.total_pages) {
         this.setState({
-          page : this.state.page + 1
+          page: this.state.page + 1
         });
       }
       console.log(this.state.page)
@@ -63,8 +65,8 @@ class App extends Component{
 
   };
 
-  render(){
-    return(
+  render() {
+    return (
       <>
         <h1>Infinity Scroll</h1>
         <hr />
